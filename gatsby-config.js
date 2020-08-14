@@ -13,6 +13,12 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
+    {
+      resolve: `gatsby-plugin-styled-components`,
+      options: {
+        // Add any options here
+      },
+    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
@@ -34,8 +40,9 @@ module.exports = {
          * The full URL of the WordPress site's GraphQL API.
          * Example : 'https://www.example-site.com/graphql'
          */
-        url: `http://ommagency.com/fpm/graphql`,
+        url: `http://ommsite.local/graphql`,
       },
+
     },
   ],
 }

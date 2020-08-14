@@ -1,35 +1,26 @@
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
+import { useStaticQuery, graphql } from "gatsby"
+import logo from "../images/omm_logo.png"
+import toggle from "../images/menu.svg"
 
-const Header = ({ siteTitle }) => (
-  <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    }}
-  >
-    <div
-      style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
-        >
-          {siteTitle}
+const Header = () => {
+  return (
+    <header className="home-align">
+      <div className="logo">
+        <Link to="/">
+          <img src={logo} style={{ width: `7em` }} />
         </Link>
-      </h1>
-    </div>
-  </header>
-)
+      </div>
+      <div className="toggle">
+        <Link to="/">
+          <img src={toggle} style={{ width: `2.5em` }} />
+        </Link>
+      </div>
+    </header>
+  )
+}
 
 Header.propTypes = {
   siteTitle: PropTypes.string,

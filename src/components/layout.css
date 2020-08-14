@@ -1,12 +1,90 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+
+/*-----NEW-----*/
+@media only screen and (min-width: 1081px) {
+  .toggle {
+    position: absolute;
+    right: 8vw;
+    top: 5.5em;
+  }
+  .logo {
+    margin-top: 5em;
+  }
+  .homeClient {
+    border-bottom: 2px solid #282828;
+  }
+  footer .logo {
+    position: absolute;
+    bottom: 0;
+    right: 10vw;
+  }
+  footer {
+    background: #333333;
+    position: relative;
+    left: 0;
+    bottom: 0;
+    height: 8em;
+  }
+  .multipleRows {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .socialContainer {
+    padding-top: 8em;
+    align-self: flex-end;
+  }
+  .contact {
+    width: 100%;
+  }
+  .bottom {
+    margin-bottom: 2px solid grey;
+  }
+}
+@media only screen and (min-width: 600px) and (max-width: 1080px) {
+  .home-align {
+    margin-left: 12vw;
+  }
+}
+@media only screen and (max-width: 559px) {
+  .home-align {
+    margin-left: 5vw;
+    margin-top: 2em;
+  }
+  .toggle {
+    position: absolute;
+    right: 4vw;
+    top: 2em;
+  }
+  .lampImage {
+    height: 20vh;
+  }
+  .socialContainer {
+    padding-top: 2em;
+  }
+  .multipleRows {
+    display: block;
+  }
+  footer .logo {
+    position: absolute;
+    bottom: 3;
+    right: 4vw;
+  }
+}
+
+/*-------------*/
+
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
+  font-family: "Roboto", sans-serif;
 }
 body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #333333;
 }
 article,
 aside,
