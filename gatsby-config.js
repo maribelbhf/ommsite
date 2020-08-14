@@ -40,9 +40,8 @@ module.exports = {
          * The full URL of the WordPress site's GraphQL API.
          * Example : 'https://www.example-site.com/graphql'
          */
-        url: `http://ommsite.local/graphql`,
+        url: `http://ommagency.com/fpm/graphql`,
       },
-
     },
   ],
 }
