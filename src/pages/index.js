@@ -20,6 +20,7 @@ export default function Home({ data }) {
     @media only screen and (max-width: 559px) {
       margin-top: 15vh;
       margin-bottom: 10vh;
+      font-size: 2em;
     }
   `
   const Text = styled.h3`
@@ -30,9 +31,9 @@ export default function Home({ data }) {
     margin-top: 20vh;
     margin-bottom: 10vh;
     @media only screen and (max-width: 559px) {
-      font-size: 1.8em;
-      margin-top: 5vh;
-      margin-bottom: 5vh;
+      font-size: 1.4em;
+      margin-top: 8vh;
+      margin-bottom: 0;
     }
   `
 
@@ -48,6 +49,8 @@ export default function Home({ data }) {
     @media only screen and (max-width: 559px) {
       line-height: 1em;
       padding-bottom: 3.4em;
+      font-size: 1.8em;
+      margin-top: 18vh;
     }
   `
 
@@ -60,6 +63,9 @@ export default function Home({ data }) {
     line-height: 1em;
     border-bottom: 2px solid grey;
     margin-top: 20vh;
+    @media only screen and (max-width: 559px) {
+      font-size: 1.4em;
+    }
   `
 
   return (
@@ -74,9 +80,9 @@ export default function Home({ data }) {
       <Image />
       <Layout>
         <Text>
-          OMM Agency es una galardonada firma de <br />
-          consultoría de branding de marcas y celebridades, con más de 300
-          marcas asesoradas en una docena de países.
+          OMM Agency es una galardonada firma de consultoría de branding de
+          marcas y celebridades, con más de 300 marcas asesoradas en una docena
+          de países.
         </Text>
       </Layout>
       <Img
