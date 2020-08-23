@@ -7,6 +7,15 @@ module.exports = {
   plugins: [
     `gatsby-plugin-react-helmet`,
     {
+      resolve: "gatsby-plugin-web-font-loader",
+      options: {
+        custom: {
+          families: ["Avenir"],
+          urls: [`${__dirname}/fonts/fonts.css`],
+        },
+      },
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
@@ -20,6 +29,8 @@ module.exports = {
       },
     },
     `gatsby-transformer-sharp`,
+    `gatsby-plugin-transition-link`,
+    `gatsby-plugin-smoothscroll`,
     `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-manifest`,
@@ -40,7 +51,7 @@ module.exports = {
          * The full URL of the WordPress site's GraphQL API.
          * Example : 'https://www.example-site.com/graphql'
          */
-        url: `http://ommagency.com/fpm/graphql`,
+        url: `https://ommagency.com/fpm/graphql`,
       },
     },
   ],

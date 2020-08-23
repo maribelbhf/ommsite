@@ -8,8 +8,10 @@ import Image from "../components/image"
 import Header from "../components/header"
 import Footer from "../components/footer"
 import ContactForm from "../components/form"
+import scrollTo from "gatsby-plugin-smoothscroll"
 
 import "../components/layout.css"
+import "../styles/home.css"
 
 export default function Home({ data }) {
   const Slogan = styled.h2`
@@ -51,6 +53,9 @@ export default function Home({ data }) {
       padding-bottom: 3.4em;
       font-size: 1.8em;
       margin-top: 18vh;
+      span {
+        display: block;
+      }
     }
   `
 
@@ -68,14 +73,53 @@ export default function Home({ data }) {
     }
   `
 
+  const LinkTag = styled.p`
+    color: #ec008c;
+    text-decoration: none;
+  `
+  const Overlay = styled.div`
+    background-color: black;
+    z-index: 40;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    opacity: 0.5;
+  `
+  const CategoryTitle = styled.a`
+    color: white;
+    font-size: 5vw;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 1;
+    z-index: 50;
+    cursor: default;
+    &:hover {
+      text-decoration: underline;
+    }
+  `
+  const CategoryTitleContainer = styled.div`
+    position: absolute;
+    height: 100%;
+    width: 100%;
+  `
+
+  const ArtistCard = styled.div`
+    position: relative;
+  `
+
   return (
     <>
       <Layout>
-        <SEO title="home" />
+        <SEO title="Home" />
         <Header />
         <Slogan className="slogan">
           Inspiring sensations, forming bonds, creating brands.
         </Slogan>
+        <button onClick={() => scrollTo("#work")}>
+          <LinkTag>Work></LinkTag>
+        </button>
       </Layout>
       <Image />
       <Layout>
@@ -84,37 +128,69 @@ export default function Home({ data }) {
           marcas y celebridades, con más de 300 marcas asesoradas en una docena
           de países.
         </Text>
+        <Link to="">
+          <LinkTag>About></LinkTag>
+        </Link>
       </Layout>
-      <Img
-        fluid={
-          data.allWpPage.edges[0].node.ClientCards.firstClient.clientMockup
-            .localFile.childImageSharp.fluid
-        }
-        className="homeClient"
-      />
-      <Img
-        fluid={
-          data.allWpPage.edges[0].node.ClientCards.secondClient.clientMockup
-            .localFile.childImageSharp.fluid
-        }
-        className="homeClient"
-      />
-      <Img
-        fluid={
-          data.allWpPage.edges[0].node.ClientCards.thirdClient.clientMockup
-            .localFile.childImageSharp.fluid
-        }
-        className="homeClient"
-      />
+      <ArtistCard id="work">
+        <Link to="/camilo">
+          <Overlay></Overlay>
+          <CategoryTitleContainer>
+            <CategoryTitle>Music Brand</CategoryTitle>
+          </CategoryTitleContainer>
+          <Img
+            fluid={
+              data.allWpPage.edges[0].node.ClientCards.firstClient.clientMockup
+                .localFile.childImageSharp.fluid
+            }
+            className="homeClient"
+            loading="eager"
+          />
+        </Link>
+      </ArtistCard>
+      <ArtistCard>
+        <Link to="/sascha">
+          <Overlay></Overlay>
+          <CategoryTitleContainer>
+            <CategoryTitle>Personal Brand</CategoryTitle>
+          </CategoryTitleContainer>
+          <Img
+            fluid={
+              data.allWpPage.edges[0].node.ClientCards.secondClient.clientMockup
+                .localFile.childImageSharp.fluid
+            }
+            className="homeClient"
+            loading="eager"
+          />
+        </Link>
+      </ArtistCard>
+
+      <ArtistCard>
+        <Link to="/lilis-gourmix">
+          <Overlay></Overlay>
+          <CategoryTitleContainer>
+            <CategoryTitle>Brand</CategoryTitle>
+          </CategoryTitleContainer>
+          <Img
+            fluid={
+              data.allWpPage.edges[0].node.ClientCards.thirdClient.clientMockup
+                .localFile.childImageSharp.fluid
+            }
+            className="homeClient"
+            loading="eager"
+          />
+        </Link>
+      </ArtistCard>
       <Layout>
         <Formula>
-          Investigaci&oacute;n + Desarrollo + <strong>Innovaci&oacute;n</strong>
+          <span>Investigaci&oacute;n +</span> <span>Desarrollo + </span>
+          <span>
+            <strong>Innovaci&oacute;n</strong>
+          </span>
         </Formula>
       </Layout>
       <Layout>
-        <Title>
-          ¿Listo para trabajar <br /> con nosotros?
-        </Title>
+        <Title>¿Interesado en una consultor&iacute;a?</Title>
       </Layout>
       <Layout>
         <ContactForm />
@@ -131,7 +207,6 @@ export const query = graphql`
         node {
           ClientCards {
             firstClient {
-              clientTitle
               clientMockup {
                 localFile {
                   childImageSharp {
@@ -143,7 +218,6 @@ export const query = graphql`
               }
             }
             secondClient {
-              clientTitle
               clientMockup {
                 localFile {
                   childImageSharp {
@@ -155,7 +229,6 @@ export const query = graphql`
               }
             }
             thirdClient {
-              clientTitle
               clientMockup {
                 localFile {
                   childImageSharp {

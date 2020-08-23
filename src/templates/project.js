@@ -1,20 +1,14 @@
-import React, { useEffect, useState } from "react"
-import Layout from "../components/layout"
+import React from "react"
+
 import { graphql } from "gatsby"
 import Post from "../components/post"
 import styled from "styled-components"
 import "../test.css"
 
-export default function BlogPost({ data }) {
+export default function BlogPost({ data, pageContext }) {
   const Card = styled.div`
-    position: absolute;
-    margin: auto;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    width: 80vw;
-    height: 50vh;
+    height: 100vh;
+    width: 100;
     background: linear-gradient(
         0deg,
         rgba(51, 51, 51, 0.5),
@@ -35,9 +29,11 @@ export default function BlogPost({ data }) {
   border-top-color: #ec008c;
   animation: spin 0.4s ease-in-out infinite;
   -webkit-animation: spin 0.5s ease-in-out infinite;
+
   position: absolute;
-  bottom:0;
-  right:0;
+  top: 50%;
+  left: 50%;
+
 }
 
 @keyframes spin {
@@ -48,26 +44,15 @@ export default function BlogPost({ data }) {
 }
   `
 
-  const ProjectTitle = styled.h1`
-    color: white;
-    position: absolute;
-    margin: auto;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-  `
-
   return (
     <>
       <Card
         className="loader-container"
         background={data.allWpPost.edges[0].node.workInfo.cover.sourceUrl}
       >
-        <ProjectTitle>{data.allWpPost.edges[0].node.title}</ProjectTitle>
         <Spinner />
       </Card>
-      <Post data={data} />
+      <Post data={[data]} />
     </>
   )
 }
@@ -76,6 +61,7 @@ export const query = graphql`
     allWpPost(filter: { slug: { eq: $slug } }) {
       edges {
         node {
+          slug
           title
           id
           workInfo {
@@ -90,17 +76,13 @@ export const query = graphql`
             image2 {
               sourceUrl
             }
-            image3 {
-              sourceUrl
-            }
-            image4 {
-              sourceUrl
-            }
-            image5 {
-              sourceUrl
-            }
           }
           link
+          categories {
+            nodes {
+              id
+            }
+          }
         }
       }
     }

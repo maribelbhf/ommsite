@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from "react"
 import Layout from "../components/layout"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
+import Header from "../components/header"
+import styled from "styled-components"
+import ContactForm from "../components/form"
+import ComingNext from "../components/ComingNext"
+import Footer from "../components/footer"
 
 export default function Post({ data }) {
   const [isLoading, SetLoading] = useState(true)
@@ -23,59 +28,74 @@ export default function Post({ data }) {
     return null
   }
 
-  const post = data.allWpPost.edges[0].node
+  const ProjectHeader = styled.div``
+  const Title = styled.h1`
+    color: white;
+    margin-top: 1em;
+    font-family: Avenir;
+    font-size: 2.5em;
+  `
+  const Resume = styled.p`
+    color: white;
+    font-family: Avenir;
+    width: 80%;
+    margin-top: 2em;
+  `
+  const FormTitle = styled.div`
+    color: white;
+    font-size: 2em;
+    font-weight: bolder;
+    height: 2.4em;
+    font-family: Avenir;
+    line-height: 1em;
+    border-bottom: 2px solid grey;
+    margin-top: 20vh;
+    @media only screen and (max-width: 559px) {
+      font-size: 1.4em;
+    }
+  `
+  const Back = styled.div`
+    color: #ec008c;
+    font-size: 1em;
+    font-family: Avenir;
+    text-align: start;
+    margin-top: 5em;
+    text-decoration: none;
+  `
+  const post = data[0].allWpPost.edges[0].node
+  const postTitle = post.workInfo.name.toUpperCase()
+
+  const categoryId = post.categories.nodes[0].id
 
   return (
     <>
       <Layout>
-        <div>
-          <h1>{post.workInfo.name}</h1>
-          <p>{post.workInfo.about}</p>
-          <div>
-            <img src={post.workInfo.cover.sourceUrl}></img>
-            <img src={post.workInfo.image1.sourceUrl}></img>
-            <img src={post.workInfo.image2.sourceUrl}></img>
-            <img src={post.workInfo.image3.sourceUrl}></img>
-            <img src={post.workInfo.image4.sourceUrl}></img>
-          </div>
-        </div>
+        <Header />
+        <ProjectHeader>
+          <Back>
+            <Link to="">
+              <Back>Volver a casos</Back>
+            </Link>
+          </Back>
+          <Title>{postTitle}</Title>
+          <Resume>{post.workInfo.about}</Resume>
+        </ProjectHeader>
       </Layout>
+      <div>
+        <div>
+          <img src={post.workInfo.cover.sourceUrl}></img>
+          <img src={post.workInfo.image1.sourceUrl}></img>
+          <img src={post.workInfo.image2.sourceUrl}></img>
+        </div>
+      </div>
+      <Layout>
+        <ComingNext Slug={post.slug} Category={post.categories.nodes[0].id} />
+      </Layout>
+      <Layout>
+        <FormTitle>¿Interesado en una consultor&iacute;a?</FormTitle>
+        <ContactForm />
+      </Layout>
+      <Footer />
     </>
   )
 }
-
-export const query = graphql`
-  query($slug: String!) {
-    allWpPost(filter: { slug: { eq: $slug } }) {
-      edges {
-        node {
-          title
-          id
-          workInfo {
-            name
-            about
-            image1 {
-              sourceUrl
-            }
-            cover {
-              sourceUrl
-            }
-            image2 {
-              sourceUrl
-            }
-            image3 {
-              sourceUrl
-            }
-            image4 {
-              sourceUrl
-            }
-            image5 {
-              sourceUrl
-            }
-          }
-          link
-        }
-      }
-    }
-  }
-`

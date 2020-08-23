@@ -38,6 +38,9 @@ const ContactForm = () => {
     @media only screen and (max-width: 559px) {
       display: block;
         width: 100%;
+        input{
+          width: 100%;
+        }
 
       }
     }
@@ -98,7 +101,7 @@ const ContactForm = () => {
       </form>
 
       <div className="multipleRows contact">
-        <Mail>hello@ommagency.com</Mail>
+        <Mail>omm@ommgroup.com</Mail>
         <div className="socialContainer">
           <SocialIcon>
             <FaFacebookF size={25} />
