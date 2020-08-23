@@ -5,11 +5,16 @@ import Post from "../components/post"
 import styled from "styled-components"
 import "../test.css"
 
-export default function BlogPost({ data, pageContext }) {
-  console.log(pageContext)
+export default function BlogPost({ data }) {
   const Card = styled.div`
-    height: 100vh;
-    width: 100;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 80vw;
+    height: 50vh;
     background: linear-gradient(
         0deg,
         rgba(51, 51, 51, 0.5),
@@ -30,11 +35,9 @@ export default function BlogPost({ data, pageContext }) {
   border-top-color: #ec008c;
   animation: spin 0.4s ease-in-out infinite;
   -webkit-animation: spin 0.5s ease-in-out infinite;
-
   position: absolute;
-  top: 50%;
-  left: 50%;
-
+  bottom:0;
+  right:0;
 }
 
 @keyframes spin {
@@ -61,9 +64,10 @@ export default function BlogPost({ data, pageContext }) {
         className="loader-container"
         background={data.allWpPost.edges[0].node.workInfo.cover.sourceUrl}
       >
+        <ProjectTitle>{data.allWpPost.edges[0].node.title}</ProjectTitle>
         <Spinner />
       </Card>
-      <Post data={[data]} />
+      <Post data={data} />
     </>
   )
 }
@@ -72,7 +76,6 @@ export const query = graphql`
     allWpPost(filter: { slug: { eq: $slug } }) {
       edges {
         node {
-          slug
           title
           id
           workInfo {
@@ -87,13 +90,17 @@ export const query = graphql`
             image2 {
               sourceUrl
             }
-          }
-          link
-          categories {
-            nodes {
-              id
+            image3 {
+              sourceUrl
+            }
+            image4 {
+              sourceUrl
+            }
+            image5 {
+              sourceUrl
             }
           }
+          link
         }
       }
     }

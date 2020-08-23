@@ -30,7 +30,6 @@ const Image = () => {
     <Img
       fluid={data.placeholderImage.childImageSharp.fluid}
       className="lampImage"
-      style={{ height: "25em" }}
     />
   )
 }

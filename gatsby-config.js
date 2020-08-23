@@ -19,10 +19,8 @@ module.exports = {
         // Add any options here
       },
     },
-    `gatsby-plugin-scroll-reveal`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-    `gatsby-plugin-transition-link`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -42,7 +40,7 @@ module.exports = {
          * The full URL of the WordPress site's GraphQL API.
          * Example : 'https://www.example-site.com/graphql'
          */
-        url: `http://ommsite.local/graphql`,
+        url: `http://ommagency.com/fpm/graphql`,
       },
     },
   ],

@@ -1,17 +1,75 @@
-@font-face {
-  font-family: "Avenir Black";
-  src: url("../../public/static/fonts/AvenirLTStd-Black.woff") format("woff");
-  src: url("../../public/static/fonts/AvenirLTStd-Black.woff2") format("woff2");
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+
+/*-----NEW-----*/
+@media only screen and (min-width: 1081px) {
+  .toggle {
+    position: absolute;
+    right: 8vw;
+    top: 5.5em;
+  }
+  .logo {
+    margin-top: 5em;
+  }
+  .homeClient {
+    border-bottom: 2px solid #282828;
+  }
+  footer .logo {
+    position: absolute;
+    bottom: 0;
+    right: 10vw;
+  }
+  footer {
+    background: #333333;
+    position: relative;
+    left: 0;
+    bottom: 0;
+    height: 8em;
+  }
+  .multipleRows {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .socialContainer {
+    padding-top: 8em;
+    align-self: flex-end;
+  }
+  .contact {
+    width: 100%;
+  }
+  .bottom {
+    margin-bottom: 2px solid grey;
+  }
 }
-@font-face {
-  font-family: "Avenir Heavy";
-  src: url("../../public/static/fonts/AvenirLTStd-Heavy.woff") format("woff");
-  src: url("../../public/static/fonts/AvenirLTStd-Heavy.woff2") format("woff2");
+@media only screen and (min-width: 600px) and (max-width: 1080px) {
+  .home-align {
+    margin-left: 12vw;
+  }
 }
-@font-face {
-  font-family: "Avenir Light";
-  src: url("../../public/static/fonts/AvenirLTStd-Light.woff") format("woff");
-  src: url("../../public/static/fonts/AvenirLTStd-Light.woff2") format("woff2");
+@media only screen and (max-width: 559px) {
+  .home-align {
+    margin-left: 5vw;
+    margin-top: 2em;
+  }
+  .toggle {
+    position: absolute;
+    right: 4vw;
+    top: 2em;
+  }
+  .lampImage {
+    height: 20vh;
+  }
+  .socialContainer {
+    padding-top: 2em;
+  }
+  .multipleRows {
+    display: block;
+  }
+  footer .logo {
+    position: absolute;
+    bottom: 3;
+    right: 4vw;
+  }
 }
 
 /*-------------*/
@@ -20,7 +78,7 @@ html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
-  font-family: "Avenir", sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 body {
   margin: 0;
@@ -238,7 +296,7 @@ img {
   padding-left: 0;
   padding-right: 0;
   padding-top: 0;
-  margin-bottom: 0.6rem;
+  margin-bottom: 1.45rem;
 }
 h1 {
   margin-left: 0;
