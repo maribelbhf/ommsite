@@ -1,0 +1,138 @@
+import React from "react"
+import { Link, graphql, useStaticQuery } from "gatsby"
+import styled from "styled-components"
+import TransitionLink from "gatsby-plugin-transition-link"
+
+const ComingNext = ({ Slug, Category }) => {
+  let categoryPosts = []
+  let postID = 0
+  let currentPostId = 0
+  let nextID = 0
+  let count = 0
+  let nextPost = []
+  let nextPostSlug = ""
+
+  const search = useStaticQuery(graphql`
+    query {
+      allWpPost {
+        edges {
+          node {
+            id
+            categories {
+              nodes {
+                id
+                name
+                posts {
+                  nodes {
+                    id
+                    slug
+                    workInfo {
+                      cover {
+                        sourceUrl
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  const wpPost = search.allWpPost.edges
+  wpPost.forEach(function (element) {
+    const queryPosts = element.node.categories.nodes[0]
+
+    if (queryPosts.id == Category) {
+      if (count === 0) {
+        count = 1
+
+        const queryPostsArray = queryPosts.posts.nodes
+
+        queryPostsArray.forEach(function (post) {
+          let postData = {}
+          postID = postID + 1
+          postData.id = postID
+          postData.slug = post.slug
+          postData.cover = post.workInfo.cover.sourceUrl
+
+          categoryPosts.push(postData)
+        })
+      }
+    }
+  })
+
+  categoryPosts.forEach(function (post) {
+    if (post.slug === Slug) {
+      currentPostId = post.id
+    }
+
+    if (categoryPosts.length === currentPostId) {
+      nextID = 1
+      nextPost = categoryPosts[0]
+      nextPostSlug = "http://localhost:8000/" + nextPost.slug
+      console.log(nextPostSlug)
+    } else {
+      if (currentPostId == 0) {
+      } else {
+        nextID = currentPostId + 1
+        nextPost = categoryPosts[currentPostId]
+
+        nextPostSlug = nextPost.slug
+        nextPostSlug = "http://localhost:8000/" + nextPost.slug
+        console.log(nextPostSlug)
+      }
+    }
+  })
+
+  const NextProject = styled.div`
+    height: 70vh;
+    border-bottom: 2px solid grey;
+    border-top: 2px solid grey;
+    margin-top: 5vh;
+  `
+  const Card = styled.div`
+    background: url(${props => props.background});
+    background-size: cover;
+    background-position: center;
+    height: 60%;
+  `
+  const Title = styled.div`
+    color: white;
+    font-size: 2em;
+    font-weight: light;
+    height: 2.4em;
+    font-family: Avenir;
+    line-height: 1em;
+
+    margin-top: 10vh;
+    @media only screen and (max-width: 559px) {
+      font-size: 1.4em;
+    }
+  `
+  const Back = styled.div`
+    color: #ec008c;
+    font-size: 1.2em;
+    font-family: Avenir;
+    text-align: end;
+    margin-top: 1em;
+  `
+
+  return (
+    <>
+      <NextProject>
+        <Title>Continúa viendo...</Title>
+        <a href={nextPostSlug} data-interception="off">
+          <Card background={nextPost.cover}></Card>
+        </a>
+        <Back>
+          <Link to="/">Volver a casos</Link>
+        </Back>
+      </NextProject>
+    </>
+  )
+}
+
+export default ComingNext

@@ -10,6 +10,7 @@ import Footer from "../components/footer"
 import ContactForm from "../components/form"
 
 import "../components/layout.css"
+import "../styles/home.css"
 
 export default function Home({ data }) {
   const Slogan = styled.h2`
@@ -51,6 +52,9 @@ export default function Home({ data }) {
       padding-bottom: 3.4em;
       font-size: 1.8em;
       margin-top: 18vh;
+      span {
+        display: block;
+      }
     }
   `
 
@@ -68,14 +72,47 @@ export default function Home({ data }) {
     }
   `
 
+  const LinkTag = styled.p`
+    color: #ec008c;
+    text-decoration: none;
+  `
+
+  const ArtistCard = styled.div`
+    position: relative;
+  `
+
+  const ArtistCardDescription = styled.div`
+    z-index: 10;
+    position: absolute !important;
+    bottom: 4em;
+    left: 10em;
+    color: white;
+    width: 12.5em;
+  `
+  const Sign = styled.div`
+    display: flex;
+    justify-content: space-around;
+    align-items: baseline;
+    width: 12.5em;
+    font-size: 0.8em;
+  `
+  const Square = styled.div`
+    width: 1.5em;
+    background-color: #ec008c;
+    height: 0.5em;
+  `
+
   return (
     <>
       <Layout>
-        <SEO title="home" />
+        <SEO title="Home" />
         <Header />
         <Slogan className="slogan">
           Inspiring sensations, forming bonds, creating brands.
         </Slogan>
+        <Link to="">
+          <LinkTag>Work></LinkTag>
+        </Link>
       </Layout>
       <Image />
       <Layout>
@@ -84,37 +121,78 @@ export default function Home({ data }) {
           marcas y celebridades, con más de 300 marcas asesoradas en una docena
           de países.
         </Text>
+        <Link to="">
+          <LinkTag>About ></LinkTag>
+        </Link>
       </Layout>
+
       <Img
         fluid={
           data.allWpPage.edges[0].node.ClientCards.firstClient.clientMockup
             .localFile.childImageSharp.fluid
         }
         className="homeClient"
+        loading="eager"
       />
-      <Img
-        fluid={
-          data.allWpPage.edges[0].node.ClientCards.secondClient.clientMockup
-            .localFile.childImageSharp.fluid
-        }
-        className="homeClient"
-      />
-      <Img
-        fluid={
-          data.allWpPage.edges[0].node.ClientCards.thirdClient.clientMockup
-            .localFile.childImageSharp.fluid
-        }
-        className="homeClient"
-      />
+      <ArtistCard>
+        <Img
+          fluid={
+            data.allWpPage.edges[0].node.ClientCards.secondClient.clientMockup
+              .localFile.childImageSharp.fluid
+          }
+          className="homeClient"
+          loading="eager"
+        />
+
+        <ArtistCardDescription>
+          <Img
+            fixed={
+              data.allWpPage.edges[0].node.ClientCards.secondClient.clientLogo
+                .localFile.childImageSharp.fixed
+            }
+          />
+          <p>Lorem Ipsum</p>
+          <Sign>
+            <Square />
+            <p>Mira el Case Study</p>
+          </Sign>
+        </ArtistCardDescription>
+      </ArtistCard>
+
+      <ArtistCard>
+        <Img
+          fluid={
+            data.allWpPage.edges[0].node.ClientCards.thirdClient.clientMockup
+              .localFile.childImageSharp.fluid
+          }
+          className="homeClient"
+          loading="eager"
+        />
+
+        <ArtistCardDescription>
+          <Img
+            fixed={
+              data.allWpPage.edges[0].node.ClientCards.thirdClient.clientLogo
+                .localFile.childImageSharp.fixed
+            }
+          />
+          <p>Lorem Ipsum</p>
+          <Sign>
+            <Square />
+            <p>Mira el Case Study</p>
+          </Sign>
+        </ArtistCardDescription>
+      </ArtistCard>
       <Layout>
         <Formula>
-          Investigaci&oacute;n + Desarrollo + <strong>Innovaci&oacute;n</strong>
+          <span>Investigaci&oacute;n +</span> <span>Desarrollo + </span>
+          <span>
+            <strong>Innovaci&oacute;n</strong>
+          </span>
         </Formula>
       </Layout>
       <Layout>
-        <Title>
-          ¿Listo para trabajar <br /> con nosotros?
-        </Title>
+        <Title>¿Interesado en una consultor&iacute;a?</Title>
       </Layout>
       <Layout>
         <ContactForm />
@@ -153,6 +231,15 @@ export const query = graphql`
                   }
                 }
               }
+              clientLogo {
+                localFile {
+                  childImageSharp {
+                    fixed(width: 400) {
+                      ...GatsbyImageSharpFixed
+                    }
+                  }
+                }
+              }
             }
             thirdClient {
               clientTitle
@@ -161,6 +248,15 @@ export const query = graphql`
                   childImageSharp {
                     fluid(maxWidth: 3500, quality: 100) {
                       ...GatsbyImageSharpFluid_withWebp
+                    }
+                  }
+                }
+              }
+              clientLogo {
+                localFile {
+                  childImageSharp {
+                    fixed(width: 400) {
+                      ...GatsbyImageSharpFixed
                     }
                   }
                 }
