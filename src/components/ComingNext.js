@@ -73,7 +73,7 @@ const ComingNext = ({ Slug, Category }) => {
     if (categoryPosts.length === currentPostId) {
       nextID = 1
       nextPost = categoryPosts[0]
-      nextPostSlug = "https://ommagency.com/fpm/" + nextPost.slug
+      nextPostSlug = "https://ommsite.netlify.app/" + nextPost.slug
     } else {
       if (currentPostId == 0) {
       } else {
@@ -81,7 +81,7 @@ const ComingNext = ({ Slug, Category }) => {
         nextPost = categoryPosts[currentPostId]
 
         nextPostSlug = nextPost.slug
-        nextPostSlug = "https://ommagency.com/fpm/" + nextPost.slug
+        nextPostSlug = "https://ommsite.netlify.app/" + nextPost.slug
       }
     }
   })
