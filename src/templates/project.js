@@ -3,6 +3,7 @@ import React from "react"
 import { graphql } from "gatsby"
 import Post from "../components/post"
 import styled from "styled-components"
+
 import "../test.css"
 
 export default function BlogPost({ data, pageContext }) {
@@ -46,12 +47,6 @@ export default function BlogPost({ data, pageContext }) {
 
   return (
     <>
-      <Card
-        className="loader-container"
-        background={data.allWpPost.edges[0].node.workInfo.cover.sourceUrl}
-      >
-        <Spinner />
-      </Card>
       <Post data={[data]} />
     </>
   )

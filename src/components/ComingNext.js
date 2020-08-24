@@ -1,6 +1,7 @@
 import React from "react"
-import { Link, graphql, useStaticQuery } from "gatsby"
+import { graphql, useStaticQuery } from "gatsby"
 import styled from "styled-components"
+import AniLink from "gatsby-plugin-transition-link/AniLink"
 
 const ComingNext = ({ Slug, Category }) => {
   let categoryPosts = []
@@ -73,7 +74,7 @@ const ComingNext = ({ Slug, Category }) => {
     if (categoryPosts.length === currentPostId) {
       nextID = 1
       nextPost = categoryPosts[0]
-      nextPostSlug = "https://ommsite.netlify.app/" + nextPost.slug
+      nextPostSlug = "/" + nextPost.slug
     } else {
       if (currentPostId == 0) {
       } else {
@@ -81,7 +82,7 @@ const ComingNext = ({ Slug, Category }) => {
         nextPost = categoryPosts[currentPostId]
 
         nextPostSlug = nextPost.slug
-        nextPostSlug = "https://ommsite.netlify.app/" + nextPost.slug
+        nextPostSlug = "/" + nextPost.slug
       }
     }
   })
@@ -119,19 +120,18 @@ const ComingNext = ({ Slug, Category }) => {
     margin-top: 1em;
     text-decoration: none;
   `
-  console.log(nextPost)
+
   return (
     <>
       <NextProject>
         <Title>Continúa viendo...</Title>
-        <a href={nextPostSlug} data-interception="off">
+        <AniLink paintDrip to={nextPostSlug} hex="#333333">
           <Card background={nextPost.cover}></Card>
-        </a>
-        <Back>
-          <Link to="#">
-            <Back>Volver a casos</Back>
-          </Link>
-        </Back>
+        </AniLink>
+
+        <AniLink paintDrip to="/" hex="#333333">
+          <Back>Volver a casos</Back>
+        </AniLink>
       </NextProject>
     </>
   )

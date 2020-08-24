@@ -117,9 +117,9 @@ export default function Home({ data }) {
         <Slogan className="slogan">
           Inspiring sensations, forming bonds, creating brands.
         </Slogan>
-        <button onClick={() => scrollTo("#work")}>
+        <a href="#work">
           <LinkTag>Work></LinkTag>
-        </button>
+        </a>
       </Layout>
       <Image />
       <Layout>

@@ -7,27 +7,8 @@ import ContactForm from "../components/form"
 import ComingNext from "../components/ComingNext"
 import Footer from "../components/footer"
 
+import AniLink from "gatsby-plugin-transition-link/AniLink"
 export default function Post({ data }) {
-  const [isLoading, SetLoading] = useState(true)
-
-  function fakeRequest() {
-    return new Promise(resolve => setTimeout(() => resolve(), 6000))
-  }
-
-  useEffect(() => {
-    fakeRequest().then(() => {
-      const el = document.querySelector(".loader-container")
-      if (el) {
-        el.remove()
-        SetLoading(!isLoading)
-      }
-    })
-  }, [])
-
-  if (isLoading) {
-    return null
-  }
-
   const ProjectHeader = styled.div``
   const Title = styled.h1`
     color: white;
@@ -73,9 +54,9 @@ export default function Post({ data }) {
         <Header />
         <ProjectHeader>
           <Back>
-            <Link to="">
+            <AniLink paintDrip to="/" hex="#333333">
               <Back>Volver a casos</Back>
-            </Link>
+            </AniLink>
           </Back>
           <Title>{postTitle}</Title>
           <Resume>{post.workInfo.about}</Resume>
