@@ -64,9 +64,18 @@ export default function Post({ data }) {
       </Layout>
       <div>
         <div>
-          <img src={post.workInfo.cover.sourceUrl}></img>
-          <img src={post.workInfo.image1.sourceUrl}></img>
-          <img src={post.workInfo.image2.sourceUrl}></img>
+          <img
+            src={post.workInfo.cover.sourceUrl}
+            style={{ marginBottom: 0 }}
+          ></img>
+          <img
+            src={post.workInfo.image1.sourceUrl}
+            style={{ marginBottom: 0 }}
+          ></img>
+          <img
+            src={post.workInfo.image2.sourceUrl}
+            style={{ marginBottom: 0 }}
+          ></img>
         </div>
       </div>
       <Layout>

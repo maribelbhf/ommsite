@@ -9,7 +9,7 @@ const ContactForm = () => {
     width: 100%
     background-color: none;
     display: block;
-
+    font-family: Avenir;
     input {
       background-color: transparent;
       border: none;
@@ -25,7 +25,7 @@ const ContactForm = () => {
     width: 25vw;
     background-color: none;
     display: inline-block;
-
+    font-family: Avenir;
     input {
       background-color: transparent;
       border: none;
@@ -52,6 +52,7 @@ const ContactForm = () => {
     float: right;
     margin-right: 3em;
     margin-top: 2em;
+    font-family: Avenir;
     &:hover {
       text-decoration: underline;
     }
@@ -61,7 +62,7 @@ const ContactForm = () => {
     color: white;
     font-weight: 600;
     padding-top: 5em;
-    font-family: Roboto;
+    font-family: Avenir;
     font-size: 1.5em;
   `
 

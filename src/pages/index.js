@@ -19,6 +19,7 @@ export default function Home({ data }) {
     text-align: left;
     font-size: 3em;
     margin-top: 25vh;
+    font-family: Avenir;
     @media only screen and (max-width: 559px) {
       margin-top: 15vh;
       margin-bottom: 10vh;
@@ -32,6 +33,7 @@ export default function Home({ data }) {
     font-weight: 200;
     margin-top: 20vh;
     margin-bottom: 10vh;
+    font-family: Avenir;
     @media only screen and (max-width: 559px) {
       font-size: 1.4em;
       margin-top: 8vh;
@@ -48,6 +50,7 @@ export default function Home({ data }) {
     font-family: Roboto;
     font-weight: 200;
     margin-top: 10vh;
+    font-family: Avenir;
     @media only screen and (max-width: 559px) {
       line-height: 1em;
       padding-bottom: 3.4em;
@@ -68,6 +71,7 @@ export default function Home({ data }) {
     line-height: 1em;
     border-bottom: 2px solid grey;
     margin-top: 20vh;
+    font-family: Avenir;
     @media only screen and (max-width: 559px) {
       font-size: 1.4em;
     }
@@ -76,6 +80,7 @@ export default function Home({ data }) {
   const LinkTag = styled.p`
     color: #ec008c;
     text-decoration: none;
+    font-family: Avenir;
   `
   const Overlay = styled.div`
     background-color: black;
@@ -95,6 +100,7 @@ export default function Home({ data }) {
     opacity: 1;
     z-index: 50;
     cursor: default;
+    font-family: Avenir;
     &:hover {
       text-decoration: underline;
     }
