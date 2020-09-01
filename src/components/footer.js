@@ -5,7 +5,7 @@ import styled from "styled-components"
 
 const Footer = () => {
   return (
-    <footer>
+    <footer className="home-align-home">
       <div className="logo">
         <Link to="/">
           <img src={logo} style={{ width: `7em` }} />

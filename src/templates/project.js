@@ -76,6 +76,7 @@ export const query = graphql`
           categories {
             nodes {
               id
+              slug
             }
           }
         }

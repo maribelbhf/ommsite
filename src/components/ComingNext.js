@@ -3,7 +3,7 @@ import { graphql, useStaticQuery } from "gatsby"
 import styled from "styled-components"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 
-const ComingNext = ({ Slug, Category }) => {
+const ComingNext = ({ Slug, Category, Gallery }) => {
   let categoryPosts = []
   let postID = 0
   let currentPostId = 0
@@ -21,7 +21,7 @@ const ComingNext = ({ Slug, Category }) => {
             categories {
               nodes {
                 id
-                name
+                slug
                 posts {
                   nodes {
                     id
@@ -65,8 +65,6 @@ const ComingNext = ({ Slug, Category }) => {
   })
 
   categoryPosts.forEach(function (post) {
-    console.log(Slug, " ", post.slug)
-
     if (post.slug === Slug) {
       currentPostId = post.id
     }
@@ -118,6 +116,7 @@ const ComingNext = ({ Slug, Category }) => {
     font-family: Avenir;
     text-align: end;
     margin-top: 1em;
+
     text-decoration: none;
   `
 
@@ -129,7 +128,7 @@ const ComingNext = ({ Slug, Category }) => {
           <Card background={nextPost.cover}></Card>
         </AniLink>
 
-        <AniLink paintDrip to="/" hex="#333333">
+        <AniLink paintDrip to={Gallery} hex="#333333">
           <Back>Volver a casos</Back>
         </AniLink>
       </NextProject>

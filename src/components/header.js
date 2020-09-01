@@ -7,13 +7,13 @@ import toggle from "../images/menu.svg"
 
 const Header = () => {
   return (
-    <header className="home-align">
-      <div className="logo">
+    <header className="home-align-home">
+      <div className="logo-home">
         <Link to="/">
           <img src={logo} style={{ width: `7em` }} />
         </Link>
       </div>
-      <div className="toggle">
+      <div className="toggle-home">
         <Link to="/">
           <img src={toggle} style={{ width: `2.5em` }} />
         </Link>

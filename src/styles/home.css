@@ -1,28 +1,27 @@
 /*-----NEW-----*/
 @media only screen and (min-width: 1081px) {
-  .toggle {
+  .toggle-home {
     position: absolute;
     right: 8vw;
     top: 5.5em;
   }
-  .logo {
+  .logo-home {
     margin-top: 5em;
   }
   .homeClient {
     border-bottom: 2px solid #282828;
   }
 
-  footer .logo {
-    position: absolute;
-    bottom: 0;
-    right: 10vw;
-  }
   footer {
     background: #333333;
     position: relative;
     left: 0;
     bottom: 0;
     height: 8em;
+  }
+  footer img {
+    position: absolute;
+    right: 8vw;
   }
   .multipleRows {
     display: flex;
@@ -40,17 +39,37 @@
     margin-bottom: 2px solid grey;
   }
 }
-@media only screen and (min-width: 600px) and (max-width: 1080px) {
-  .home-align {
+@media only screen and (min-width: 560px) and (max-width: 1080px) {
+  .home-align-home {
     margin-left: 12vw;
+  }
+
+  .toggle-home {
+    position: absolute;
+    right: 8vw;
+    top: 5.5em;
+  }
+  .logo-home {
+    margin-top: 5em;
+  }
+  footer {
+    background: #333333;
+    position: relative;
+    left: 0;
+    bottom: 0;
+    height: 8em;
+  }
+  footer img {
+    position: absolute;
+    right: 8vw;
   }
 }
 @media only screen and (max-width: 559px) {
-  .home-align {
-    margin-left: 5vw;
+  .home-align-home {
+    margin-left: 0;
     margin-top: 2em;
   }
-  .toggle {
+  .toggle-home {
     position: absolute;
     right: 4vw;
     top: 2em;
@@ -64,9 +83,15 @@
   .multipleRows {
     display: block;
   }
-  footer .logo {
+  footer {
+    background: #333333;
+    position: relative;
+    left: 0;
+    bottom: 0;
+    height: 8em;
+  }
+  footer img {
     position: absolute;
-    bottom: 3;
-    right: 4vw;
+    left: 0;
   }
 }

@@ -8,7 +8,6 @@ import Image from "../components/image"
 import Header from "../components/header"
 import Footer from "../components/footer"
 import ContactForm from "../components/form"
-import scrollTo from "gatsby-plugin-smoothscroll"
 
 import "../components/layout.css"
 import "../styles/home.css"
@@ -25,19 +24,33 @@ export default function Home({ data }) {
       margin-bottom: 10vh;
       font-size: 2em;
     }
+    @media only screen and (min-width: 560px) and (max-width: 1080px) {
+      font-size: 2em;
+      margin-left: 10vw;
+    }
   `
   const Text = styled.h3`
     color: white;
-    height: 25vh;
+    height: 18vh;
     font-size: 2em;
     font-weight: 200;
     margin-top: 20vh;
-    margin-bottom: 10vh;
+    margin-bottom: 0;
     font-family: Avenir;
     @media only screen and (max-width: 559px) {
       font-size: 1.4em;
       margin-top: 8vh;
-      margin-bottom: 0;
+      margin-bottom: 25vh;
+    }
+    @media only screen and (min-width: 560px) and (max-width: 1080px) {
+      margin-left: 10vw;
+      font-size: 2em;
+    }
+    @media only screen and (max-width: 561px) and (min-height: 600px) {
+      margin-bottom: 10vh;
+    }
+    @media only screen and (max-width: 561px) and (min-height: 668px) {
+      margin-bottom: 5vh;
     }
   `
 
@@ -60,6 +73,12 @@ export default function Home({ data }) {
         display: block;
       }
     }
+    @media only screen and (min-width: 560px) and (max-width: 1080px) {
+      line-height: 1em;
+      padding-bottom: 1em;
+      font-size: 2em;
+      margin-top: 18vh;
+    }
   `
 
   const Title = styled.div`
@@ -81,6 +100,13 @@ export default function Home({ data }) {
     color: #ec008c;
     text-decoration: none;
     font-family: Avenir;
+    margin-bottom: 10vh;
+    @media only screen and (min-width: 500px) and (max-width: 1080px) {
+      margin-left: 10vw;
+    }
+    @media only screen and (max-width: 500px) and (min-height: 600px) {
+      margin-bottom: 5vh;
+    }
   `
   const Overlay = styled.div`
     background-color: black;
@@ -139,7 +165,7 @@ export default function Home({ data }) {
         </Link>
       </Layout>
       <ArtistCard id="work">
-        <Link to="/camilo">
+        <Link to="/music">
           <Overlay></Overlay>
           <CategoryTitleContainer>
             <CategoryTitle>Music Brand</CategoryTitle>
@@ -155,7 +181,7 @@ export default function Home({ data }) {
         </Link>
       </ArtistCard>
       <ArtistCard>
-        <Link to="/sascha">
+        <Link to="/personal-brand">
           <Overlay></Overlay>
           <CategoryTitleContainer>
             <CategoryTitle>Personal Brand</CategoryTitle>
@@ -172,7 +198,7 @@ export default function Home({ data }) {
       </ArtistCard>
 
       <ArtistCard>
-        <Link to="/lilis-gourmix">
+        <Link to="/brands">
           <Overlay></Overlay>
           <CategoryTitleContainer>
             <CategoryTitle>Brand</CategoryTitle>

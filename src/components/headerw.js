@@ -9,15 +9,14 @@ import styled from "styled-components"
 const Headerw = () => {
   const HeaderContainer = styled.header`
     margin-left: 0;
+    position: absolute;
+    z-index: 10;
   `
   return (
     <HeaderContainer className="home-align">
       <div className="logo">
         <Link to="/">
-          <img
-            src={logo}
-            style={{ width: `7em`, position: `absolute`, left: `6em` }}
-          />
+          <img src={logo} style={{ width: `7em` }} />
         </Link>
       </div>
       <div className="toggle">

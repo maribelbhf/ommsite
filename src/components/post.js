@@ -45,16 +45,16 @@ export default function Post({ data }) {
   `
   const post = data[0].allWpPost.edges[0].node
   const postTitle = post.workInfo.name.toUpperCase()
-
+  const category = "/" + post.categories.nodes[0].slug
   const categoryId = post.categories.nodes[0].id
-
+  console.log(data)
   return (
     <>
       <Layout>
         <Header />
         <ProjectHeader>
           <Back>
-            <AniLink paintDrip to="/" hex="#333333">
+            <AniLink paintDrip to={category} hex="#333333">
               <Back>Volver a casos</Back>
             </AniLink>
           </Back>
@@ -79,7 +79,11 @@ export default function Post({ data }) {
         </div>
       </div>
       <Layout>
-        <ComingNext Slug={post.slug} Category={post.categories.nodes[0].id} />
+        <ComingNext
+          Slug={post.slug}
+          Category={post.categories.nodes[0].id}
+          Gallery={category}
+        />
       </Layout>
       <Layout>
         <FormTitle>¿Interesado en una consultor&iacute;a?</FormTitle>

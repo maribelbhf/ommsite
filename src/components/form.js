@@ -43,6 +43,13 @@ const ContactForm = () => {
         }
 
       }
+      @media only screen and (min-width: 560px) and (max-width: 1080px) {
+        display: block;
+        width: 100%;
+        input{
+          width: 100%;
+        }
+      }
     }
   `
 
